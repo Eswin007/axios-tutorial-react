@@ -1,0 +1,56 @@
+.dish {
+  display: flex;
+  flex-direction: column;
+  //   max-width: 20rem;
+  border: 1px solid #cecece;
+  border-radius: 8px;
+  overflow: hidden;
+  padding-top: 1.25rem;
+  background-color: white;
+
+  &:hover {
+    box-shadow: 0 0 1rem rgba(orangered, 0.15);
+    .dish__img {
+      transform: scale(1.1) rotate(1deg);
+    }
+  }
+
+  &__img {
+    max-width: 80%;
+    margin: auto;
+    transition: all 0.2s ease;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.5rem;
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .btn-wrap {
+    display: flex;
+    margin-top: 0.5rem;
+    justify-content: space-between;
+    > * {
+      flex: 1;
+    }
+  }
+}
+
+.food-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 2rem;
+  padding-inline: 4rem;
+}

@@ -1,0 +1,41 @@
+.btn {
+  all: unset;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: orangered;
+  color: white;
+  &:hover {
+    background-color: darken($color: orangered, $amount: 15);
+  }
+}
+
+.btn-secondary {
+  color: orangered;
+  //   border: 1px solid orangered;
+  &:hover {
+    background-color: lighten($color: orangered, $amount: 45);
+  }
+}
+
+.btn-cart {
+  all: unset;
+  padding: 0.875rem 1rem;
+  color: white;
+  display: grid;
+  place-content: center;
+  line-height: 1;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: darken($color: orangered, $amount: 15);
+  border-radius: 4px;
+  cursor: pointer;
+}
