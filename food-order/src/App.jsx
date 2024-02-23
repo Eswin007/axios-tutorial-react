@@ -1,29 +1,35 @@
 import logo from "./logo.svg";
 import axios from "axios";
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import FoodList from "./components/FoodList";
 import "./styles/main.scss";
+import { CartContext } from "./context/CartContext";
 
 const baseURL = "http://localhost:4000";
 
 const App = () => {
   const [dishes, setDishes] = useState([]);
+  const [cart, setCart] = useState();
+  const [menuIsActive, setMenuIsActive] = useState(false);
 
   const fetchData = async (foodItem) => {
     const foodList = await axios.get(`${baseURL}/${foodItem}`);
     setDishes(foodList.data);
+    // if(foodItem === )
   };
   useEffect(() => {
     fetchData("pizza");
   }, []);
-  console.log(dishes);
 
   return (
     <div>
-      <Header fetchData={fetchData} />
-      <FoodList dishes={dishes} />
+      <CartContext.Provider
+        value={{ dishes, menuIsActive, setMenuIsActive, fetchData }}
+      >
+        <Header />
+        <FoodList dishes={dishes} />
+      </CartContext.Provider>
     </div>
   );
 };

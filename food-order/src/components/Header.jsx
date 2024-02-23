@@ -1,35 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../img/logo.svg";
+import MenuLink from "./MenuLink";
 
 const Header = ({ fetchData }) => {
+  const menuItems = [
+    "pizza",
+    "pasta",
+    "salads",
+    "dessert",
+    "drinks",
+    "sauces",
+    "sides",
+  ];
   return (
     <div className="header">
       <div className="header__logo">
         <img src={logo} alt="" />
       </div>
-      <ul className="menu">
-        <li>
-          <a onClick={() => fetchData("pizza")}>Pizza</a>
-        </li>
-        <li>
-          <a onClick={() => fetchData("pasta")}>Pasta</a>
-        </li>
-        <li>
-          <a onClick={() => fetchData("salads")}>salads</a>
-        </li>
-        <li>
-          <a onClick={() => fetchData("dessert")}>dessert</a>
-        </li>
-        <li>
-          <a onClick={() => fetchData("drinks")}>drinks</a>
-        </li>
-        <li>
-          <a onClick={() => fetchData("sauces")}>sauces</a>
-        </li>
-        <li>
-          <a onClick={() => fetchData("sides")}>sides</a>
-        </li>
-      </ul>
+      <div className="menu">
+        {menuItems.map((link) => {
+          return <MenuLink dishName={link} />;
+        })}
+      </div>
+
       <button className="btn-cart">Cart(0)</button>
     </div>
   );

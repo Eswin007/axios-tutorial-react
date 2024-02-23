@@ -33,5 +33,9 @@
     &.active {
       opacity: 1;
     }
+    &.active {
+      color: orangered;
+      opacity: 1;
+    }
   }
 }
