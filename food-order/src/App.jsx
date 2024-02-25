@@ -15,13 +15,13 @@ const App = () => {
   const [activeMenu, setActiveMenu] = useState("pizza");
 
   const menuItems = [
-    { id: 1, item: "pizza" },
-    { id: 2, item: "pasta" },
-    { id: 3, item: "salads" },
-    { id: 4, item: "dessert" },
-    { id: 5, item: "drinks" },
-    { id: 6, item: "sauces" },
-    { id: 7, item: "sides" },
+    "pizza",
+    "pasta",
+    "salads",
+    "dessert",
+    "drinks",
+    "sauces",
+    "sides",
   ];
 
   const fetchData = async (foodItem) => {

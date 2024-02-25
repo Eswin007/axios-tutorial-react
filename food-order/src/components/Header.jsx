@@ -12,7 +12,7 @@ const Header = () => {
       </div>
       <div className="menu">
         {cartCtx.menuItems.map((link) => {
-          return <MenuLink dishName={link.item} id={link.id} key={link.id} />;
+          return <MenuLink dishName={link} key={link} />;
         })}
       </div>
 
