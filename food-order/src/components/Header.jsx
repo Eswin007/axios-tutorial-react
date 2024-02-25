@@ -1,25 +1,18 @@
 import React, { useContext } from "react";
 import logo from "../img/logo.svg";
 import MenuLink from "./MenuLink";
+import { CartContext } from "../context/CartContext";
 
-const Header = ({ fetchData }) => {
-  const menuItems = [
-    "pizza",
-    "pasta",
-    "salads",
-    "dessert",
-    "drinks",
-    "sauces",
-    "sides",
-  ];
+const Header = () => {
+  const cartCtx = useContext(CartContext);
   return (
     <div className="header">
       <div className="header__logo">
         <img src={logo} alt="" />
       </div>
       <div className="menu">
-        {menuItems.map((link) => {
-          return <MenuLink dishName={link} />;
+        {cartCtx.menuItems.map((link) => {
+          return <MenuLink dishName={link.item} id={link.id} key={link.id} />;
         })}
       </div>
 

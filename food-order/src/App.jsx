@@ -12,20 +12,37 @@ const App = () => {
   const [dishes, setDishes] = useState([]);
   const [cart, setCart] = useState();
   const [menuIsActive, setMenuIsActive] = useState(false);
+  const [activeMenu, setActiveMenu] = useState("pizza");
+
+  const menuItems = [
+    { id: 1, item: "pizza" },
+    { id: 2, item: "pasta" },
+    { id: 3, item: "salads" },
+    { id: 4, item: "dessert" },
+    { id: 5, item: "drinks" },
+    { id: 6, item: "sauces" },
+    { id: 7, item: "sides" },
+  ];
 
   const fetchData = async (foodItem) => {
     const foodList = await axios.get(`${baseURL}/${foodItem}`);
     setDishes(foodList.data);
-    // if(foodItem === )
+    setActiveMenu(foodItem);
   };
   useEffect(() => {
     fetchData("pizza");
   }, []);
-
   return (
     <div>
       <CartContext.Provider
-        value={{ dishes, menuIsActive, setMenuIsActive, fetchData }}
+        value={{
+          dishes,
+          menuIsActive,
+          setMenuIsActive,
+          fetchData,
+          menuItems,
+          activeMenu,
+        }}
       >
         <Header />
         <FoodList dishes={dishes} />

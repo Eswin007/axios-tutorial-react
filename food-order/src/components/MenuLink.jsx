@@ -4,13 +4,9 @@ import { CartContext } from "../context/CartContext";
 const MenuLink = ({ dishName }) => {
   const cartCtx = useContext(CartContext);
 
-  if (dishName === dishName) {
-    cartCtx.setMenuIsActive(true);
-  }
-
   return (
     <a
-      className={`${cartCtx.menuIsActive ? "active" : ""}`}
+      className={cartCtx.activeMenu === dishName ? "active" : ""}
       onClick={() => cartCtx.fetchData(dishName)}
     >
       {dishName}
