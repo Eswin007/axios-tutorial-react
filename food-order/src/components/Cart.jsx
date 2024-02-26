@@ -1,8 +1,12 @@
 import React from "react";
+import Header from "./Header";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const Cart = () => {
   return (
     <>
+      <Header />
+
       <div className="cart">
         <div className="cart__left">
           <div className="cart__title">Cart</div>

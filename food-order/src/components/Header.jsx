@@ -5,14 +5,14 @@ import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const cartCtx = useContext(CartContext);
+  const { menuItems } = useContext(CartContext);
   return (
     <div className="header">
       <div className="header__logo">
         <img src={logo} alt="" />
       </div>
       <div className="menu">
-        {cartCtx.menuItems?.map((link) => {
+        {menuItems?.map((link) => {
           return <MenuLink dishName={link} key={link} />;
         })}
       </div>
