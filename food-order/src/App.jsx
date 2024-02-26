@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import FoodList from "./components/FoodList";
 import "./styles/main.scss";
 import { CartContext } from "./context/CartContext";
+import Cart from "./components/Cart";
 
 const baseURL = "http://localhost:4000";
 
@@ -45,6 +46,7 @@ const App = () => {
         }}
       >
         <Header />
+        <Cart />
         <FoodList dishes={dishes} />
       </CartContext.Provider>
     </div>
