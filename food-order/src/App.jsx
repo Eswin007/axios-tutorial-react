@@ -5,6 +5,9 @@ import Header from "./components/Header";
 import FoodList from "./components/FoodList";
 import "./styles/main.scss";
 import { CartContext } from "./context/CartContext";
+
+import { RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Cart from "./components/Cart";
 
 const baseURL = "http://localhost:4000";
@@ -24,6 +27,17 @@ const App = () => {
     "sauces",
     "sides",
   ];
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <FoodList dishes={dishes} />,
+    },
+    {
+      path: "/cart",
+      element: <Cart />,
+    },
+  ]);
 
   const fetchData = async (foodItem) => {
     const foodList = await axios.get(`${baseURL}/${foodItem}`);
@@ -46,8 +60,9 @@ const App = () => {
         }}
       >
         <Header />
-        <Cart />
-        <FoodList dishes={dishes} />
+        <RouterProvider router={router} />
+
+        {/* <FoodList dishes={dishes} /> */}
       </CartContext.Provider>
     </div>
   );
