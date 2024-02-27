@@ -6,12 +6,13 @@ import "./styles/main.scss";
 import { CartContext } from "./context/CartContext";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
+import Header from "./components/Header";
 
 const baseURL = "http://localhost:4000";
 
 const App = () => {
   const [dishes, setDishes] = useState([]);
-  const [cart, setCart] = useState();
+  const [cartItems, setCartItems] = useState(["Pizza", "Pasta"]);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [activeMenu, setActiveMenu] = useState("");
 
@@ -33,6 +34,13 @@ const App = () => {
   useEffect(() => {
     fetchData("pizza");
   }, []);
+
+  const addToCart = (item) => {
+    console.log(item);
+    const newCartItems = [...cartItems, { name: item.name, id: item.id }];
+    setCartItems(newCartItems);
+  };
+
   return (
     <div>
       <CartContext.Provider
@@ -43,6 +51,8 @@ const App = () => {
           fetchData,
           menuItems,
           activeMenu,
+          cartItems,
+          addToCart,
         }}
       >
         <RouterProvider router={router} />

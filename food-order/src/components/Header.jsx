@@ -5,7 +5,7 @@ import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { menuItems } = useContext(CartContext);
+  const { menuItems, cartItems } = useContext(CartContext);
   return (
     <div className="header">
       <div className="header__logo">
@@ -17,8 +17,8 @@ const Header = () => {
         })}
       </div>
 
-      <Link to={"/cart"}>
-        <button className="btn-cart">Cart(0)</button>
+      <Link to={"/cart"} className="btn-cart">
+        Cart ({cartItems.length})
       </Link>
     </div>
   );

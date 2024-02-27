@@ -5,14 +5,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 const Cart = () => {
   return (
     <>
-      <Header />
-
       <div className="cart">
         <div className="cart__left">
           <div className="cart__title">Cart</div>
           <div className="cart__list">
             <div className="cart__item">
-              <div className="cart__item-img"></div>
+              <div className="cart__item-img">Image</div>
               <div className="cart__item-name">Pizza</div>
               <div className="cart__item-price"></div>
 
