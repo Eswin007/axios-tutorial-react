@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import "./styles/main.scss";
 import { CartContext } from "./context/CartContext";
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider, useParams } from "react-router-dom";
 import { router } from "./router";
 import Header from "./components/Header";
 
@@ -12,10 +12,9 @@ const baseURL = "http://localhost:4000";
 
 const App = () => {
   const [dishes, setDishes] = useState([]);
-  const [cartItems, setCartItems] = useState(["Pizza", "Pasta"]);
+  const [cartItems, setCartItems] = useState([]);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [activeMenu, setActiveMenu] = useState("");
-
   const menuItems = [
     "pizza",
     "pasta",
@@ -37,7 +36,10 @@ const App = () => {
 
   const addToCart = (item) => {
     console.log(item);
-    const newCartItems = [...cartItems, { name: item.name, id: item.id }];
+    const newCartItems = [
+      ...cartItems,
+      { name: item.name, id: item.id, image: item.image },
+    ];
     setCartItems(newCartItems);
   };
 

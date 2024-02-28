@@ -1,30 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "./Header";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import CartItem from "./CartItem";
+import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
+  const { cartItems } = useContext(CartContext);
   return (
     <>
       <div className="cart">
         <div className="cart__left">
           <div className="cart__title">Cart</div>
           <div className="cart__list">
-            <div className="cart__item">
-              <div className="cart__item-img">Image</div>
-              <div className="cart__item-name">Pizza</div>
-              <div className="cart__item-price"></div>
-
-              <div className="cart__item-count">
-                <div className="cart__item-count-btn">-</div>
-                <input
-                  type="text"
-                  className="cart__item-count-input"
-                  placeholder="count"
-                />
-                <div className="cart__item-count-btn">+</div>
-              </div>
-              <div className="cart__item-del">Delete</div>
-            </div>
+            {cartItems.map((item) => (
+              <CartItem name={item.name} image={item.image} />
+            ))}
           </div>
         </div>
         <div className="cart__right">
