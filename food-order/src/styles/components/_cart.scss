@@ -14,7 +14,7 @@
     font-size: 22px;
     color: #333;
     font-weight: bold;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   &__item {
@@ -22,7 +22,10 @@
     align-items: center;
     gap: 1rem;
   }
-
+  &__item-name {
+    font-weight: bold;
+    color: #333;
+  }
   &__item-count {
     display: flex;
     align-items: center;
@@ -30,7 +33,7 @@
   }
 
   &__item-img {
-    width: 3rem;
+    width: 5rem;
     img {
       width: 100%;
     }

@@ -13,7 +13,11 @@ const Cart = () => {
           <div className="cart__title">Cart</div>
           <div className="cart__list">
             {cartItems.map((item) => (
-              <CartItem name={item.name} image={item.image} />
+              <CartItem
+                name={item.name}
+                image={item.image}
+                price={item.price}
+              />
             ))}
           </div>
         </div>

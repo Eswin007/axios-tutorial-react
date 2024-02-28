@@ -38,7 +38,7 @@ const App = () => {
     console.log(item);
     const newCartItems = [
       ...cartItems,
-      { name: item.name, id: item.id, image: item.image },
+      { name: item.name, id: item.id, image: item.image, price: item.price },
     ];
     setCartItems(newCartItems);
   };
