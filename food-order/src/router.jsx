@@ -7,9 +7,12 @@ import MainLayout from "./components/MainLayout";
 export const router = createBrowserRouter([
   {
     path: "/",
+
     element: <MainLayout />,
+
     errorElement: <div>404, Page not found</div>,
     children: [
+      { index: true, element: <FoodList /> },
       {
         path: "/foodList",
         element: <FoodList />,

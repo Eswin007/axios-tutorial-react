@@ -8,20 +8,28 @@ const Cart = () => {
   const { cartItems } = useContext(CartContext);
   return (
     <>
-      <div className="cart">
-        <div className="cart__left">
-          <div className="cart__title">Cart</div>
+      <div className="cart-wrap">
+        <div className="cart-left">
+          <div className="cart-title">Cart</div>
           <div className="cart__list">
-            {cartItems.map((item) => (
-              <CartItem
-                name={item.name}
-                image={item.image}
-                price={item.price}
-              />
-            ))}
+            {cartItems.length !== 0 ? (
+              cartItems.map((item) => (
+                <CartItem
+                  name={item.name}
+                  image={item.image}
+                  price={item.price}
+                  key={item.id}
+                  id={item.id}
+                  vegetarian={item.vegetarian}
+                  spicy={item.spicy}
+                />
+              ))
+            ) : (
+              <div>Your Cart is empty</div>
+            )}
           </div>
         </div>
-        <div className="cart__right">
+        <div className="cart-right">
           <div className="cart__sub-total">
             <p>Subtotal</p>
             <span>$100</span>

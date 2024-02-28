@@ -33,13 +33,25 @@ const App = () => {
   useEffect(() => {
     fetchData("pizza");
   }, []);
-
+  console.log(dishes);
   const addToCart = (item) => {
-    console.log(item);
     const newCartItems = [
       ...cartItems,
-      { name: item.name, id: item.id, image: item.image, price: item.price },
+
+      {
+        name: item.name,
+        id: item.id,
+        image: item.image,
+        price: item.price,
+        vegetarian: item.vegetarian,
+        spicy: item.spicy,
+      },
     ];
+    setCartItems(newCartItems);
+  };
+
+  const deleteCartItem = (id, name) => {
+    const newCartItems = cartItems.filter((item) => item.id !== id);
     setCartItems(newCartItems);
   };
 
@@ -55,6 +67,7 @@ const App = () => {
           activeMenu,
           cartItems,
           addToCart,
+          deleteCartItem,
         }}
       >
         <RouterProvider router={router} />
