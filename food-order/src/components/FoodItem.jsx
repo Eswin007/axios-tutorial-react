@@ -8,7 +8,7 @@ const FoodItem = ({ image, name, price, onClick }) => {
       <img className="dish__img" src={image} alt="" />
       <div className="dish__details">
         <div className="dish__name">{name}</div>
-        <div className="dish__price">{`$${price}`}</div>
+        <div className="dish__price">{`$${price.toFixed(2)}`}</div>
       </div>
       <div className="btn-wrap">
         <button className="btn btn-secondary">Save for later</button>

@@ -29,10 +29,10 @@ const CartItem = ({ name, image, price, vegetarian, spicy, id }) => {
         </div>
       </div>
       <div className="cartItem__control">
-        <div className="cartItem__price">${price}</div>
+        <div className="cartItem__price">${price.toFixed(2)}</div>
         <button
           className="cartItem__del btn"
-          onClick={() => deleteCartItem(id, name)}
+          onClick={() => deleteCartItem(id)}
         >
           Remove Item
         </button>

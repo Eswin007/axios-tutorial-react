@@ -3,9 +3,11 @@ import Header from "./Header";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import CartItem from "./CartItem";
 import { CartContext } from "../context/CartContext";
+import CartAmount from "./CartAmount";
 
 const Cart = () => {
   const { cartItems } = useContext(CartContext);
+
   return (
     <>
       <div className="cart-wrap">
@@ -25,29 +27,16 @@ const Cart = () => {
                 />
               ))
             ) : (
-              <div>Your Cart is empty</div>
+              <div className="empty-cart">Your Cart is empty :(</div>
             )}
           </div>
         </div>
-        <div className="cart-right">
-          <div className="cart__sub-total">
-            <p>Subtotal</p>
-            <span>$100</span>
+
+        {cartItems.length !== 0 && (
+          <div className="cart-right">
+            <CartAmount />
           </div>
-          <div className="cart__discount">
-            <p>Discount</p>
-            <span>-$16</span>
-          </div>
-          <div className="cart__tax">
-            <p>Tax</p>
-            <span>+$14</span>
-          </div>
-          <div className="cart__total">
-            <p>Total</p>
-            <span>$80</span>
-          </div>
-          <button>Continue Shopping</button>
-        </div>
+        )}
       </div>
     </>
   );

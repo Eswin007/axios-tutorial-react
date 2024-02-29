@@ -1,6 +1,7 @@
 .cart-wrap {
-  display: grid;
-  grid-template-columns: 55% 45%;
+  // display: grid;
+  // grid-template-columns: 55% 45%;
+  display: flex;
   gap: 1rem;
   width: 100%;
   .cart-title {
@@ -13,6 +14,13 @@
     border: 1px solid #ccc;
     padding: 1rem;
     border-radius: 0.5rem;
+  }
+  .cart-left {
+    flex: 1;
+  }
+  .cart-right {
+    width: 45%;
+    max-width: 30rem;
   }
 }
 
@@ -107,4 +115,45 @@
     color: orangered;
     cursor: pointer;
   }
+}
+
+.cartAmnt {
+  &__calc {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 0.5rem;
+
+    &.discount,
+    &.tax {
+      opacity: 0.8;
+      justify-content: flex-end;
+
+      p,
+      span {
+        font-size: 0.875rem;
+      }
+      span {
+        width: 4.5rem;
+        text-align: right;
+      }
+    }
+    & + & {
+      border-top: 1px solid #ccc;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    span {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.empty-cart {
+  display: grid;
+  place-content: center;
+  height: 100%;
+  padding-block: 2.5rem;
+  font-size: 1rem;
 }

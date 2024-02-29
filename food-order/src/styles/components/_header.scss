@@ -6,7 +6,10 @@
   padding-block: 1.5rem;
 
   border-bottom: 1px solid #ccc;
+  background-color: white;
   margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
 
   &__logo {
     width: 7rem;

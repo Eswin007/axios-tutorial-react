@@ -36,24 +36,26 @@ const App = () => {
   console.log(dishes);
   const addToCart = (item) => {
     const newCartItems = [
-      ...cartItems,
-
       {
         name: item.name,
-        id: item.id,
+        id: `${item.id} + ${item.image} + ${Math.random()}`,
         image: item.image,
         price: item.price,
         vegetarian: item.vegetarian,
         spicy: item.spicy,
       },
+      ...cartItems,
     ];
     setCartItems(newCartItems);
   };
 
-  const deleteCartItem = (id, name) => {
+  const deleteCartItem = (id) => {
     const newCartItems = cartItems.filter((item) => item.id !== id);
     setCartItems(newCartItems);
   };
+
+  const subTotal = cartItems.reduce((acc, cur) => acc + cur.price, 0);
+  console.log(subTotal);
 
   return (
     <div>
@@ -68,6 +70,7 @@ const App = () => {
           cartItems,
           addToCart,
           deleteCartItem,
+          subTotal,
         }}
       >
         <RouterProvider router={router} />
