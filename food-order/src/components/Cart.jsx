@@ -15,7 +15,7 @@ const Cart = () => {
           <div className="cart-title">Cart</div>
           <div className="cart__list">
             {cartItems.length !== 0 ? (
-              cartItems.map((item) => (
+              cartItems.map((item, index) => (
                 <CartItem
                   name={item.name}
                   image={item.image}
@@ -24,6 +24,7 @@ const Cart = () => {
                   id={item.id}
                   vegetarian={item.vegetarian}
                   spicy={item.spicy}
+                  index={index}
                 />
               ))
             ) : (

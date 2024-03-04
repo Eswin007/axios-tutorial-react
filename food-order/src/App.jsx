@@ -15,6 +15,7 @@ const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [activeMenu, setActiveMenu] = useState("");
+  const [quantity, setQuantity] = useState(1);
   const menuItems = [
     "pizza",
     "pasta",
@@ -33,7 +34,6 @@ const App = () => {
   useEffect(() => {
     fetchData("pizza");
   }, []);
-  console.log(dishes);
   const addToCart = (item) => {
     const newCartItems = [
       {
@@ -43,6 +43,7 @@ const App = () => {
         price: item.price,
         vegetarian: item.vegetarian,
         spicy: item.spicy,
+        index: item.index,
       },
       ...cartItems,
     ];
@@ -54,8 +55,10 @@ const App = () => {
     setCartItems(newCartItems);
   };
 
-  const subTotal = cartItems.reduce((acc, cur) => acc + cur.price, 0);
-  console.log(subTotal);
+  const subTotal = cartItems.reduce(
+    (acc, cur) => acc + cur.price * quantity,
+    0
+  );
 
   return (
     <div>
@@ -70,7 +73,10 @@ const App = () => {
           cartItems,
           addToCart,
           deleteCartItem,
+          setCartItems,
           subTotal,
+          setQuantity,
+          quantity,
         }}
       >
         <RouterProvider router={router} />
