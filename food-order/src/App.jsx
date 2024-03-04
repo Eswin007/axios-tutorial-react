@@ -15,7 +15,7 @@ const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [activeMenu, setActiveMenu] = useState("");
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   const menuItems = [
     "pizza",
     "pasta",
@@ -43,7 +43,7 @@ const App = () => {
         price: item.price,
         vegetarian: item.vegetarian,
         spicy: item.spicy,
-        index: item.index,
+        quantity: 1,
       },
       ...cartItems,
     ];
@@ -54,11 +54,6 @@ const App = () => {
     const newCartItems = cartItems.filter((item) => item.id !== id);
     setCartItems(newCartItems);
   };
-
-  const subTotal = cartItems.reduce(
-    (acc, cur) => acc + cur.price * quantity,
-    0
-  );
 
   return (
     <div>
@@ -74,9 +69,9 @@ const App = () => {
           addToCart,
           deleteCartItem,
           setCartItems,
-          subTotal,
-          setQuantity,
-          quantity,
+          // subTotal,
+          // setQuantity,
+          // quantity,
         }}
       >
         <RouterProvider router={router} />

@@ -1,16 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 
 const CartAmount = () => {
-  const { subTotal } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
+  const [updatedQuantity, setUpdatedQuantity] = useState();
+
+  useEffect(() => {
+    const updatedCart = cartItems.map((item) => item.quantity + item.index);
+    setUpdatedQuantity(updatedCart);
+  }, [updatedQuantity]);
+
+  const subTotal = cartItems.reduce(
+    (acc, cur) => acc + cur.price * +cur.quantity,
+    0
+  );
+  useEffect(() => {}, [subTotal]);
 
   const findPercent = (part, whole) => {
     return (part / 100) * whole;
   };
+
   const discount = findPercent(12, subTotal);
   const discountedTotal = subTotal - discount;
   const tax = findPercent(5, subTotal);
   const total = discountedTotal + tax;
+
   return (
     <div className="cartAmnt">
       <div className="cartAmnt__calc sub-total">

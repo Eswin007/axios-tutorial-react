@@ -4,22 +4,33 @@ import icoSpicy from "../img/spicy.png";
 import { CartContext } from "../context/CartContext";
 
 const CartItem = ({ name, image, price, vegetarian, spicy, id, index }) => {
-  const { deleteCartItem, setQuantity, quantity, cartItems } =
-    useContext(CartContext);
+  const { deleteCartItem, cartItems } = useContext(CartContext);
+  const [quantity, setQuantity] = useState(1);
+
   const onChangeHandler = (e) => {
     setQuantity(e.target.value);
   };
 
-  const addQuantity = (index) => {
-    console.log(index);
-    console.log(cartItems.index);
-    // if (index === cartItems.index) {
-    //   setQuantity((prev) => prev + 1);
-    // }
+  const addQuantity = (id, index) => {
+    const indexedItem = cartItems.find((item) => item.id === id);
+    console.log(indexedItem);
+    if (indexedItem === cartItems[index]) {
+      setQuantity((prev) => prev + 1);
+      indexedItem.quantity = quantity + 1;
+    } else {
+      alert("hi");
+    }
   };
 
-  const minusQuantity = () => {
-    setQuantity((prev) => prev - 1);
+  const minusQuantity = (id, index) => {
+    const indexedItem = cartItems.find((item) => item.id === id);
+    console.log(indexedItem);
+    if (indexedItem === cartItems[index]) {
+      setQuantity((prev) => prev - 1);
+      indexedItem.quantity = quantity - 1;
+    } else {
+      alert("hi");
+    }
   };
   return (
     <div className="cartItem">
@@ -36,7 +47,7 @@ const CartItem = ({ name, image, price, vegetarian, spicy, id, index }) => {
           <span className="cartItem__count-label">Quantity:</span>
           <button
             className="cartItem__count-btn"
-            onClick={() => minusQuantity(id)}
+            onClick={() => minusQuantity(id, index)}
             disabled={quantity === 1}
           >
             -
@@ -44,20 +55,20 @@ const CartItem = ({ name, image, price, vegetarian, spicy, id, index }) => {
           <input
             type="text"
             className="cartItem__count-input"
-            value={quantity || 1}
+            value={+quantity}
             min={1}
-            onChange={() => onChangeHandler(index)}
+            onChange={(e) => onChangeHandler(e)}
           />
           <button
             className="cartItem__count-btn"
-            onClick={() => addQuantity(index)}
+            onClick={() => addQuantity(id, index)}
           >
             +
           </button>
         </div>
       </div>
       <div className="cartItem__control">
-        <div className="cartItem__price">${price.toFixed(2) * quantity}</div>
+        <div className="cartItem__price">${price.toFixed(2)}</div>
         <button
           className="cartItem__del btn"
           onClick={() => deleteCartItem(id)}
