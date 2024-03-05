@@ -5,14 +5,19 @@
   padding-inline: 4rem;
   padding-block: 1.5rem;
 
-  border-bottom: 1px solid #ccc;
+  box-shadow: 0 3px 1rem rgba(black, 0.1);
   background-color: white;
   margin-bottom: 2rem;
   position: sticky;
   top: 0;
 
   &__logo {
-    width: 7rem;
+    width: 10rem;
+    display: grid;
+    place-content: center;
+    img {
+      width: 100%;
+    }
   }
 }
 
@@ -20,17 +25,16 @@
   display: flex;
   align-items: center;
   list-style: none;
-
-  gap: 1.5rem;
-  text-transform: uppercase;
-  font-weight: bold;
+  text-transform: capitalize;
+  gap: 0.75rem;
 
   & > a {
-    opacity: 0.5;
+    padding: 0.25rem 0.75rem;
     cursor: pointer;
     text-decoration: none;
     color: #333;
     transition: all 0.3s ease;
+    border-radius: 100vmax;
     &:hover {
       opacity: 1;
     }
@@ -39,7 +43,8 @@
       opacity: 1;
     }
     &.active {
-      color: orangered;
+      color: white;
+      background-color: rgb(74, 177, 74);
       opacity: 1;
     }
   }

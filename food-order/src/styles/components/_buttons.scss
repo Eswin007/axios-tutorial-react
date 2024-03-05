@@ -1,6 +1,7 @@
 .btn {
   all: unset;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 100vmax;
   font-weight: bold;
   font-size: 14px;
   text-transform: uppercase;
@@ -20,7 +21,7 @@
 
 .btn-secondary {
   color: orangered;
-  //   border: 1px solid orangered;
+  border: 1px solid orangered;
   &:hover {
     background-color: lighten($color: orangered, $amount: 45);
   }

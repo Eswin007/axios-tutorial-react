@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
 const FoodItem = ({ image, name, price, onClick }) => {
-  const cartCtx = useContext(CartContext);
+  const { cartCtx } = useContext(CartContext);
   return (
     <div className="dish">
       <img className="dish__img" src={image} alt="" />
@@ -11,8 +11,7 @@ const FoodItem = ({ image, name, price, onClick }) => {
         <div className="dish__price">{`$${price.toFixed(2)}`}</div>
       </div>
       <div className="btn-wrap">
-        <button className="btn btn-secondary">Save for later</button>
-        <button className="btn btn-primary" onClick={onClick}>
+        <button className="btn btn-secondary" onClick={onClick}>
           Add to Cart
         </button>
       </div>
