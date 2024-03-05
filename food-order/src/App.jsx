@@ -15,7 +15,7 @@ const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [activeMenu, setActiveMenu] = useState("");
-  // const [quantity, setQuantity] = useState(1);
+  const [subTotal, setSubTotal] = useState(0);
   const menuItems = [
     "pizza",
     "pasta",
@@ -50,6 +50,17 @@ const App = () => {
     setCartItems(newCartItems);
   };
 
+  const calcTotal = () => {
+    const total = cartItems.reduce(
+      (acc, cur) => acc + cur.price * cur.quantity,
+      0
+    );
+    setSubTotal(total);
+  };
+  useEffect(() => {
+    calcTotal();
+  }, [cartItems]);
+
   const deleteCartItem = (id) => {
     const newCartItems = cartItems.filter((item) => item.id !== id);
     setCartItems(newCartItems);
@@ -69,7 +80,8 @@ const App = () => {
           addToCart,
           deleteCartItem,
           setCartItems,
-          // subTotal,
+          subTotal,
+          calcTotal,
           // setQuantity,
           // quantity,
         }}

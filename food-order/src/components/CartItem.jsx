@@ -3,34 +3,38 @@ import icoVeg from "../img/ico-veg-symbol.svg";
 import icoSpicy from "../img/spicy.png";
 import { CartContext } from "../context/CartContext";
 
-const CartItem = ({ name, image, price, vegetarian, spicy, id, index }) => {
-  const { deleteCartItem, cartItems } = useContext(CartContext);
+const CartItem = ({
+  name,
+  image,
+  price,
+  vegetarian,
+  spicy,
+  id,
+  index,
+  qty,
+}) => {
+  const { deleteCartItem, cartItems, setIndex, calcTotal } =
+    useContext(CartContext);
+
   const [quantity, setQuantity] = useState(1);
 
   const onChangeHandler = (e) => {
     setQuantity(e.target.value);
+    cartItems[index].quantity = quantity;
   };
 
   const addQuantity = (id, index) => {
-    const indexedItem = cartItems.find((item) => item.id === id);
-    console.log(indexedItem);
-    if (indexedItem === cartItems[index]) {
-      setQuantity((prev) => prev + 1);
-      indexedItem.quantity = quantity + 1;
-    } else {
-      alert("hi");
-    }
+    setQuantity((prev) => prev + 1);
+    cartItems[index].quantity = quantity + 1;
+    calcTotal();
+    // cartItems[index].quantity = quantity;
+    // console.log(cartItems[index].quantity);
   };
 
   const minusQuantity = (id, index) => {
-    const indexedItem = cartItems.find((item) => item.id === id);
-    console.log(indexedItem);
-    if (indexedItem === cartItems[index]) {
-      setQuantity((prev) => prev - 1);
-      indexedItem.quantity = quantity - 1;
-    } else {
-      alert("hi");
-    }
+    setQuantity((prev) => prev - 1);
+    cartItems[index].quantity = quantity - 1;
+    calcTotal(quantity);
   };
   return (
     <div className="cartItem">
@@ -54,8 +58,9 @@ const CartItem = ({ name, image, price, vegetarian, spicy, id, index }) => {
           </button>
           <input
             type="text"
+            disabled
             className="cartItem__count-input"
-            value={+quantity}
+            value={qty}
             min={1}
             onChange={(e) => onChangeHandler(e)}
           />

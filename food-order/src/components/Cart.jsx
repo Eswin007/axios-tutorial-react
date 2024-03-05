@@ -25,6 +25,7 @@ const Cart = () => {
                   vegetarian={item.vegetarian}
                   spicy={item.spicy}
                   index={index}
+                  qty={item.quantity}
                 />
               ))
             ) : (
